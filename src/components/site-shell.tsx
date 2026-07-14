@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import logoAsset from "@/assets/resurrect-logo.png.asset.json";
+
 
 function Wordmark({ tone = "ink" }: { tone?: "ink" | "paper" }) {
   const color = tone === "ink" ? "text-foreground" : "text-paper";
