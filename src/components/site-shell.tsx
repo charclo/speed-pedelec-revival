@@ -118,4 +118,4 @@ export function Page({ children }: { children: ReactNode }) {
   );
 }
 
-export { logoAsset };
+
