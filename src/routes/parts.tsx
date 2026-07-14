@@ -5,9 +5,9 @@ export const Route = createFileRoute("/parts")({
   head: () => ({
     meta: [
       { title: "Parts — Resurrect" },
-      { name: "description", content: "Aftermarket batteries, controllers and drive parts for Klever and Stromer speed pedelecs." },
+      { name: "description", content: "Open motor controllers, colour displays and GPS data loggers for Klever and Stromer speed pedelecs." },
       { property: "og:title", content: "Parts — Resurrect" },
-      { property: "og:description", content: "Aftermarket batteries, controllers and drive parts for speed pedelecs." },
+      { property: "og:description", content: "Open controllers, displays and GPS loggers for speed pedelecs." },
       { property: "og:url", content: "/parts" },
     ],
     links: [{ rel: "canonical", href: "/parts" }],
@@ -17,43 +17,51 @@ export const Route = createFileRoute("/parts")({
 
 const parts = [
   {
-    tag: "R-BAT.01",
-    title: "48V Battery pack",
-    fits: "Klever B / X series",
-    spec: "14s5p · 17.5 Ah · Samsung 50E cells · CAN-BMS",
-    price: "€ 890",
-    status: "In stock",
-  },
-  {
-    tag: "R-BAT.02",
-    title: "48V Battery pack — long range",
-    fits: "Klever B / X series",
-    spec: "14s7p · 24.5 Ah · LG M50LT · CAN-BMS",
-    price: "€ 1.190",
-    status: "Made to order",
-  },
-  {
     tag: "R-CTRL.02",
     title: "Open motor controller",
     fits: "Klever mid-drive",
-    spec: "STM32G4 · FOC firmware · open CAN protocol",
+    spec: "STM32G4 · FOC firmware · open CAN protocol · 45 A peak",
     price: "€ 320",
     status: "In stock",
+  },
+  {
+    tag: "R-CTRL.03",
+    title: "Motor controller — tuned",
+    fits: "Klever B / X series",
+    spec: "Reflashable torque & assist curves · workshop tool included",
+    price: "€ 380",
+    status: "Made to order",
   },
   {
     tag: "R-DIS.01",
     title: "Colour display + keypad",
     fits: "Klever B / X / S45",
-    spec: "2.4″ transflective · trip · diag · OTA",
+    spec: "2.4″ transflective · trip · diagnostics · OTA updates",
     price: "€ 180",
+    status: "In stock",
+  },
+  {
+    tag: "R-DIS.02",
+    title: "Compact head-unit",
+    fits: "Klever B / X",
+    spec: "1.3″ mono OLED · speed · battery · assist level",
+    price: "€ 120",
     status: "Pre-order",
   },
   {
-    tag: "R-HAR.01",
-    title: "Main wiring harness",
-    fits: "Klever B / X",
-    spec: "Sealed connectors · tinned copper · frame-length",
-    price: "€ 95",
+    tag: "R-LOG.01",
+    title: "GPS data logger",
+    fits: "Klever B / X / S45",
+    spec: "u-blox GNSS · LTE-M · CAN sniff · .fit / .gpx export",
+    price: "€ 210",
+    status: "In stock",
+  },
+  {
+    tag: "R-LOG.02",
+    title: "GPS tracker — anti-theft",
+    fits: "Universal 12–48 V",
+    spec: "Concealed mount · geofence alerts · 30-day battery backup",
+    price: "€ 160",
     status: "In stock",
   },
   {
@@ -72,11 +80,11 @@ function PartsPage() {
       <section className="container-x pt-16 md:pt-24 pb-10">
         <div className="eyebrow">Catalogue</div>
         <h1 className="mt-4 font-display text-5xl md:text-6xl font-medium tracking-tight">
-          Parts that outlive the manufacturer.
+          Open electronics for speed pedelecs.
         </h1>
         <p className="mt-5 max-w-2xl text-lg text-muted-foreground">
-          Every part is drop-in compatible, documented, and repairable with standard tools.
-          Schematics and firmware are published under CERN-OHL-S.
+          Controllers, displays and GPS loggers — drop-in compatible, documented, and
+          serviceable with standard tools. Schematics and firmware published under CERN-OHL-S.
         </p>
       </section>
 
@@ -109,7 +117,7 @@ function PartsPage() {
           <div className="max-w-lg">
             <div className="eyebrow">Don't see your part?</div>
             <h2 className="mt-2 font-display text-2xl font-medium tracking-tight">
-              Tell us what's broken. We might already have a prototype.
+              Tell us what you need. We might already have a prototype.
             </h2>
           </div>
           <Link

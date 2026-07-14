@@ -54,7 +54,7 @@ function ContactPage() {
               rows={5}
               required
               className="w-full rounded-md border border-input bg-background px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
-              placeholder="Battery won't charge past 20%. Display shows error 08…"
+              placeholder="Display shows error 08 on my Klever B, want to log GPS trips…"
             />
           </div>
           <button

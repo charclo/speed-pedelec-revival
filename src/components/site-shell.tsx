@@ -1,31 +1,23 @@
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
+import logoAsset from "@/assets/resurrect-logo.png.asset.json";
 
 
 function Wordmark({ tone = "ink" }: { tone?: "ink" | "paper" }) {
   const color = tone === "ink" ? "text-foreground" : "text-paper";
   return (
     <Link to="/" className={`flex items-center gap-2 ${color}`}>
-      <LeafR className="h-7 w-7" />
-      <span className="font-display text-xl font-medium tracking-tight">resurrect</span>
+      <img
+        src={logoAsset.url}
+        alt="Resurrect"
+        width={140}
+        height={40}
+        className="h-9 w-auto"
+      />
     </Link>
   );
 }
 
-function LeafR({ className = "" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 40 40" className={className} aria-hidden>
-      <path
-        d="M14 6h4l12 28h-5l-3-7h-4l3 7h-5L14 6z"
-        fill="currentColor"
-      />
-      <path
-        d="M18 12c-4 1-7 5-7 9s3 6 7 6c0-4 0-8 3-11-1-3-2-4-3-4z"
-        fill="var(--color-leaf)"
-      />
-    </svg>
-  );
-}
 
 const nav = [
   { to: "/", label: "Home" },
