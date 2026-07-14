@@ -21,21 +21,23 @@ function AboutPage() {
       <section className="container-x pt-16 md:pt-24 pb-16">
         <div className="eyebrow">About the workshop</div>
         <h1 className="mt-4 font-display text-5xl md:text-6xl font-medium tracking-tight max-w-3xl">
-          A garage-sized answer to disposable e-bikes.
+          A garage-sized answer to closed e-bike electronics.
         </h1>
+
       </section>
 
       <section className="container-x pb-24 grid gap-16 md:grid-cols-12">
         <div className="md:col-span-7 space-y-6 text-lg text-muted-foreground">
           <p>
-            Resurrect started the day a friend's Klever B25 died out of warranty and no
-            replacement battery could be found — anywhere in Europe. A perfectly good
-            frame, motor, brakes and wheels, made worthless by a locked BMS.
+            Resurrect started with a simple frustration: a Klever rider who wanted to see
+            his own trip data and couldn't. The controller spoke a closed CAN dialect and
+            the display only talked to a single vendor app.
           </p>
           <p>
-            We reverse-engineered the CAN protocol, designed a new pack, and rode the
-            bike home. Word spread. A year later, we're a small workshop of engineers
-            and mechanics building parts that manufacturers refuse to.
+            We reverse-engineered the protocol, built an open controller and a colour
+            display that showed the data riders actually cared about. Then we added GPS
+            logging. Word spread — a year later we're a small workshop of engineers and
+            mechanics building electronics that manufacturers won't.
           </p>
           <p>
             Everything we design is documented, modular, and released under an open
@@ -45,10 +47,11 @@ function AboutPage() {
 
         <aside className="md:col-span-4 md:col-start-9 space-y-8">
           <Stat n="3" label="Engineers in the workshop" />
-          <Stat n="140+" label="Bikes revived to date" />
-          <Stat n="12.6 t" label="Estimated CO₂ avoided" />
+          <Stat n="140+" label="Bikes upgraded to date" />
+          <Stat n="6" label="Open firmware releases" />
           <Stat n="OHL-S" label="Open hardware licence" />
         </aside>
+
       </section>
 
       <section className="bg-foreground text-paper">

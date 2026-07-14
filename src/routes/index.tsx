@@ -1,8 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Page } from "@/components/site-shell";
 import heroImg from "@/assets/workshop-hero.jpg";
-import batteryImg from "@/assets/battery.jpg";
 import controllerImg from "@/assets/controller.jpg";
+import gpsImg from "@/assets/gps-logger.jpg";
+import displayImg from "@/assets/display.jpg";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -17,13 +18,13 @@ function Home() {
           <div className="lg:col-span-7">
             <div className="eyebrow">After market parts · speed pedelecs</div>
             <h1 className="mt-5 font-display text-5xl md:text-7xl font-medium leading-[0.95] tracking-tight">
-              Bringing dead <br />
-              speed pedelecs <br />
-              <span className="text-leaf-deep">back to life.</span>
+              Smarter electronics <br />
+              for speed <br />
+              <span className="text-leaf-deep">pedelecs.</span>
             </h1>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-              Resurrect designs and builds aftermarket batteries, controllers and drive-train
-              parts for orphaned high-speed e-bikes. We start with Klever. Stromer is next.
+              Resurrect designs open motor controllers, colour displays and GPS data loggers
+              for high-speed e-bikes. Built for Klever today. Stromer next.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
@@ -36,7 +37,7 @@ function Home() {
                 to="/contact"
                 className="inline-flex items-center rounded-full border border-foreground/40 px-6 py-3 text-sm font-medium hover:border-foreground transition-colors"
               >
-                Revive my bike →
+                Upgrade my bike →
               </Link>
             </div>
           </div>
@@ -44,7 +45,7 @@ function Home() {
             <div className="relative rounded-lg overflow-hidden border border-border shadow-[0_30px_60px_-20px_rgba(30,40,35,0.35)]">
               <img
                 src={heroImg}
-                alt="A Klever speed pedelec on a repair stand next to controller boards and battery cells"
+                alt="A Klever speed pedelec on a repair stand next to controller boards"
                 width={1600}
                 height={1100}
                 className="w-full h-[420px] md:h-[520px] object-cover"
@@ -61,8 +62,8 @@ function Home() {
         <div className="border-y border-border bg-muted/60">
           <div className="container-x grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-border">
             {[
-              { t: "Sustainability", d: "Keep working frames on the road. One replaced battery pack saves ~90 kg of embodied CO₂." },
-              { t: "Repairability", d: "Modular parts you can swap with hex keys and a soldering iron. No proprietary lockouts." },
+              { t: "Open firmware", d: "FOC controller firmware you can read, flash and tune. No locked drive units." },
+              { t: "Repairability", d: "Modular boards you can swap with hex keys and a soldering iron. Documented connectors." },
               { t: "Open source", d: "Schematics, firmware and BOMs published under CERN-OHL-S. Fork, remix, contribute." },
             ].map((p) => (
               <div key={p.t} className="p-8 md:p-10">
@@ -79,22 +80,21 @@ function Home() {
         <div className="md:col-span-4">
           <div className="eyebrow">The problem</div>
           <h2 className="mt-4 font-display text-4xl md:text-5xl font-medium tracking-tight">
-            When the manufacturer walks away, the bike shouldn't.
+            Great bikes, closed electronics.
           </h2>
         </div>
         <div className="md:col-span-7 md:col-start-6 space-y-6 text-lg text-muted-foreground">
           <p>
-            Klever Mobility exited Europe. Overnight, thousands of perfectly good 45 km/h
-            pedelecs became unrepairable — no spare batteries, no controller firmware, no
-            service network.
+            Speed pedelecs are the best commuter bikes ever built — and the most opaque.
+            Proprietary controllers, encrypted diagnostic ports, displays that only talk to
+            one brand of app.
           </p>
           <p>
-            Stromer riders face the same fate on a longer timeline. Proprietary BMS boards,
-            locked drive units, encrypted diagnostic ports. A €5.000 bike bricked by a €40
-            component.
+            Riders can't read their own trip data. Shops can't tune motor curves. A GPS
+            fix or a firmware update means waiting on a vendor roadmap that may never come.
           </p>
           <p className="text-foreground">
-            We're building the parts that manufacturers won't.
+            We build the electronics that riders and workshops actually want.
           </p>
         </div>
       </section>
@@ -114,20 +114,27 @@ function Home() {
             </Link>
           </div>
 
-          <div className="mt-14 grid gap-6 md:grid-cols-2">
-            <PartCard
-              img={batteryImg}
-              tag="R-BAT.01"
-              title="48V Battery pack — Klever B/X series"
-              spec="14s5p · 17.5 Ah · LG M50LT · CAN-BMS · drop-in fit"
-              price="€ 890"
-            />
+          <div className="mt-14 grid gap-6 md:grid-cols-3">
             <PartCard
               img={controllerImg}
               tag="R-CTRL.02"
-              title="Open controller board — Klever mid-drive"
+              title="Open motor controller"
               spec="STM32G4 · FOC firmware · reverse-engineered CAN protocol"
               price="€ 320"
+            />
+            <PartCard
+              img={displayImg}
+              tag="R-DIS.01"
+              title="Colour display + keypad"
+              spec="2.4″ transflective · trip data · diagnostics · OTA"
+              price="€ 180"
+            />
+            <PartCard
+              img={gpsImg}
+              tag="R-LOG.01"
+              title="GPS data logger"
+              spec="u-blox GNSS · LTE-M · CAN sniff · open .fit export"
+              price="€ 210"
             />
           </div>
         </div>
@@ -142,9 +149,10 @@ function Home() {
               Started with Klever. Stromer is next.
             </h2>
             <p className="mt-4 text-muted-foreground max-w-lg">
-              If you ride a Klever B, X or S-series — we probably already have a fix.
-              Stromer ST1/ST2/ST3 support is in reverse-engineering phase; join the
-              waitlist to steer priorities.
+              We're independent from Klever Mobility — they still support their own bikes.
+              We simply add what riders and workshops ask for: open controllers, better
+              displays, and GPS logging. Stromer ST1/ST2/ST3 support is in
+              reverse-engineering phase.
             </p>
           </div>
           <ul className="grid grid-cols-2 gap-3">
@@ -172,7 +180,7 @@ function Home() {
       <section className="container-x pb-24">
         <div className="rounded-xl border border-border bg-muted/60 p-10 md:p-16 flex flex-col md:flex-row gap-8 md:items-center justify-between">
           <div className="max-w-xl">
-            <div className="eyebrow">Ride a dead pedelec?</div>
+            <div className="eyebrow">Want more from your pedelec?</div>
             <h2 className="mt-3 font-display text-3xl md:text-4xl font-medium tracking-tight">
               Tell us the model. We'll tell you what's possible.
             </h2>
