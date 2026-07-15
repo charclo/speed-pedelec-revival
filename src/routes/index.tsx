@@ -201,10 +201,13 @@ function Home() {
 }
 
 function PartCard({
-  img, tag, title, spec, price,
-}: { img: string; tag: string; title: string; spec: string; price: string }) {
+  to, img, tag, title, spec, price,
+}: { to: "/parts" | "/parts/motor-controller" | "/parts/gps-logger"; img: string; tag: string; title: string; spec: string; price: string }) {
   return (
-    <article className="group rounded-lg overflow-hidden border border-paper/10 bg-paper/[0.03]">
+    <Link
+      to={to}
+      className="group rounded-lg overflow-hidden border border-paper/10 bg-paper/[0.03] block"
+    >
       <div className="aspect-[4/3] overflow-hidden">
         <img
           src={img}
@@ -223,6 +226,6 @@ function PartCard({
         <h3 className="mt-3 font-display text-xl font-medium text-paper">{title}</h3>
         <p className="mt-2 text-sm text-paper/60">{spec}</p>
       </div>
-    </article>
+    </Link>
   );
 }
