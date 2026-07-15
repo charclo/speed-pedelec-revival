@@ -116,6 +116,7 @@ function Home() {
 
           <div className="mt-14 grid gap-6 md:grid-cols-3">
             <PartCard
+              to="/parts/motor-controller"
               img={controllerImg}
               tag="R-CTRL.02"
               title="Open motor controller"
@@ -123,6 +124,7 @@ function Home() {
               price="€ 320"
             />
             <PartCard
+              to="/parts"
               img={displayImg}
               tag="R-DIS.01"
               title="Colour display + keypad"
@@ -130,6 +132,7 @@ function Home() {
               price="€ 180"
             />
             <PartCard
+              to="/parts/gps-logger"
               img={gpsImg}
               tag="R-LOG.01"
               title="GPS data logger"
