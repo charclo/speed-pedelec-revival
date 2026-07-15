@@ -10,7 +10,6 @@ export const Route = createFileRoute("/parts/motor-controller")({
       { property: "og:title", content: "Open motor controller — Resurrect" },
       { property: "og:description", content: "Open firmware FOC controller for Klever speed pedelecs." },
       { property: "og:url", content: "/parts/motor-controller" },
-      { property: "og:image", content: "https://id-preview--302dda58-9fca-41ef-b74d-91a5f051ead8.lovable.app" + new URL(controllerImg, "https://id-preview--302dda58-9fca-41ef-b74d-91a5f051ead8.lovable.app").pathname },
     ],
     links: [{ rel: "canonical", href: "/parts/motor-controller" }],
   }),
