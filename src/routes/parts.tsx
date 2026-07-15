@@ -23,6 +23,7 @@ const parts = [
     spec: "STM32G4 · FOC firmware · open CAN protocol · 45 A peak",
     price: "€ 320",
     status: "In stock",
+    href: "/parts/motor-controller" as const,
   },
   {
     tag: "R-CTRL.03",
@@ -55,6 +56,7 @@ const parts = [
     spec: "u-blox GNSS · LTE-M · CAN sniff · .fit / .gpx export",
     price: "€ 210",
     status: "In stock",
+    href: "/parts/gps-logger" as const,
   },
   {
     tag: "R-LOG.02",
@@ -72,7 +74,10 @@ const parts = [
     price: "—",
     status: "Waitlist",
   },
-];
+] satisfies ReadonlyArray<{
+  tag: string; title: string; fits: string; spec: string; price: string; status: string;
+  href?: "/parts/motor-controller" | "/parts/gps-logger";
+}>;
 
 function PartsPage() {
   return (
