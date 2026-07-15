@@ -52,7 +52,7 @@ function Home() {
               />
               <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs text-paper/90 font-display uppercase tracking-widest">
                 <span>Workshop no. 01</span>
-                <span>Utrecht · NL</span>
+                <span>Gent · BE</span>
               </div>
             </div>
           </div>

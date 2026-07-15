@@ -1,19 +1,34 @@
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import logoAsset from "@/assets/resurrect-logo.png.asset.json";
 
 
 function Wordmark({ tone = "ink" }: { tone?: "ink" | "paper" }) {
   const color = tone === "ink" ? "text-foreground" : "text-paper";
   return (
-    <Link to="/" className={`flex items-center gap-2 ${color}`}>
-      <img
-        src={logoAsset.url}
-        alt="Resurrect"
-        width={140}
-        height={40}
-        className="h-9 w-auto"
-      />
+    <Link to="/" className={`flex items-center gap-3 ${color}`} aria-label="Resurrect — home">
+      <svg
+        viewBox="0 0 40 40"
+        width="32"
+        height="32"
+        className="h-8 w-8"
+        aria-hidden="true"
+      >
+        <circle cx="20" cy="20" r="19" fill="none" stroke="currentColor" strokeWidth="1.5" />
+        <path
+          d="M13 28 V13 h8 a5 5 0 0 1 0 10 h-4 l7 5"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.2"
+          strokeLinecap="square"
+          strokeLinejoin="miter"
+        />
+        <path
+          d="M27 11 c-3 1 -5 3 -5 6 c3 0 5 -2 5 -6 z"
+          className="fill-current text-leaf"
+        />
+
+      </svg>
+      <span className="font-display text-lg tracking-tight lowercase">resurrect</span>
     </Link>
   );
 }
@@ -80,7 +95,7 @@ export function SiteFooter() {
         <div>
           <div className="eyebrow text-leaf">Workshop</div>
           <ul className="mt-4 space-y-2 text-sm text-paper/80">
-            <li>Utrecht, Netherlands</li>
+            <li>Gent, Belgium</li>
             <li>
               <a href="mailto:workshop@resurrect.bike" className="hover:text-leaf">
                 workshop@resurrect.bike
