@@ -32,7 +32,7 @@ function ContactPage() {
           </p>
 
           <div className="mt-10 space-y-4 text-sm">
-            <ContactRow label="Workshop" value="Utrecht, Netherlands" />
+            <ContactRow label="Workshop" value="Gent, Belgium" />
             <ContactRow label="Email" value="workshop@resurrect.bike" href="mailto:workshop@resurrect.bike" />
             <ContactRow label="Hours" value="Tue – Fri · by appointment" />
           </div>

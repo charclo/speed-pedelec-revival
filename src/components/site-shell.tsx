@@ -95,7 +95,7 @@ export function SiteFooter() {
         <div>
           <div className="eyebrow text-leaf">Workshop</div>
           <ul className="mt-4 space-y-2 text-sm text-paper/80">
-            <li>Utrecht, Netherlands</li>
+            <li>Gent, Belgium</li>
             <li>
               <a href="mailto:workshop@resurrect.bike" className="hover:text-leaf">
                 workshop@resurrect.bike
