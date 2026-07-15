@@ -104,7 +104,15 @@ function PartsPage() {
                 {p.tag}
               </div>
               <div className="md:col-span-5">
-                <div className="font-display text-lg font-medium">{p.title}</div>
+                <div className="font-display text-lg font-medium">
+                  {p.href ? (
+                    <Link to={p.href} className="hover:text-leaf-deep">
+                      {p.title} →
+                    </Link>
+                  ) : (
+                    p.title
+                  )}
+                </div>
                 <div className="text-xs uppercase tracking-widest text-muted-foreground mt-1">
                   Fits · {p.fits}
                 </div>
