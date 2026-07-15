@@ -24,9 +24,9 @@ function Wordmark({ tone = "ink" }: { tone?: "ink" | "paper" }) {
         />
         <path
           d="M27 11 c-3 1 -5 3 -5 6 c3 0 5 -2 5 -6 z"
-          fill="hsl(var(--leaf, 140 40% 45%))"
-          className="text-leaf"
+          className="fill-current text-leaf"
         />
+
       </svg>
       <span className="font-display text-lg tracking-tight lowercase">resurrect</span>
     </Link>
