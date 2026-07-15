@@ -19,82 +19,116 @@ export const Route = createFileRoute("/parts/motor-controller")({
 function MotorControllerPage() {
   return (
     <Page>
-      <section className="container-x pt-12 md:pt-16 pb-24 grid gap-12 md:grid-cols-12">
-        <div className="md:col-span-6">
-          <div className="rounded-lg overflow-hidden border border-border">
-            <img
-              src={controllerImg}
-              alt="Open motor controller PCB on the workbench"
-              width={1600}
-              height={1200}
-              className="w-full h-auto object-cover"
-            />
-          </div>
-        </div>
+      {/* Breadcrumb */}
+      <div className="container-x pt-8">
+        <Link to="/parts" className="text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground">
+          ← Catalogue
+        </Link>
+      </div>
 
-        <div className="md:col-span-6 md:pl-4">
-          <Link to="/parts" className="text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground">
-            ← Catalogue
-          </Link>
-          <div className="mt-4 eyebrow text-leaf-deep">R-CTRL.02 · In stock</div>
-          <h1 className="mt-3 font-display text-4xl md:text-5xl font-medium tracking-tight">
-            Open motor controller
-          </h1>
-          <p className="mt-4 text-lg text-muted-foreground">
-            A drop-in FOC controller for Klever mid-drives that speaks a documented CAN
-            protocol and boots firmware you can read, flash and tune. No locked drive units,
-            no vendor tooling required.
-          </p>
+      {/* HERO — big picture */}
+      <section className="container-x pt-6 pb-10">
+        <div className="eyebrow text-leaf-deep">R-CTRL.02 · In stock</div>
+        <h1 className="mt-3 font-display text-5xl md:text-7xl font-medium tracking-tight max-w-4xl">
+          Open motor controller
+        </h1>
+        <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
+          A drop-in FOC controller for Klever mid-drives that speaks a documented CAN
+          protocol and boots firmware you can read, flash and tune. No locked drive
+          units, no vendor tooling required.
+        </p>
 
-          <div className="mt-6 flex items-baseline gap-4">
-            <span className="font-display text-3xl">€ 320</span>
-            <span className="text-xs uppercase tracking-widest text-muted-foreground">
-              incl. workshop harness
-            </span>
-          </div>
-
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              to="/contact"
-              className="inline-flex items-center rounded-full bg-foreground px-6 py-3 text-sm font-medium text-primary-foreground hover:bg-foreground/90"
-            >
-              Order / fit at the workshop
-            </Link>
-            <a
-              href="mailto:workshop@resurrect.bike?subject=R-CTRL.02"
-              className="inline-flex items-center rounded-full border border-foreground/40 px-6 py-3 text-sm font-medium hover:border-foreground"
-            >
-              Ask a question
-            </a>
-          </div>
-
-          <dl className="mt-10 grid grid-cols-2 gap-x-6 gap-y-4 text-sm">
-            <Spec k="MCU" v="STM32G4 · 170 MHz" />
-            <Spec k="Peak current" v="45 A · 30 A cont." />
-            <Spec k="Voltage" v="36 – 48 V nominal" />
-            <Spec k="Control" v="Sensored FOC · 40 kHz" />
-            <Spec k="Protocol" v="Open CAN 2.0B" />
-            <Spec k="Fits" v="Klever B / X / S45" />
-            <Spec k="Firmware" v="GPL-3.0 · OTA capable" />
-            <Spec k="Diagnostics" v="USB-C serial + CAN" />
-          </dl>
+        <div className="mt-10 rounded-xl overflow-hidden border border-border shadow-[0_40px_80px_-30px_rgba(30,40,35,0.4)]">
+          <img
+            src={controllerImg}
+            alt="Open motor controller PCB on the workbench"
+            width={2000}
+            height={1250}
+            className="w-full h-auto object-cover"
+          />
         </div>
       </section>
 
-      <section className="border-t border-border bg-muted/40">
-        <div className="container-x py-16 grid gap-10 md:grid-cols-3">
-          <Block title="What's in the box">
-            Controller board in aluminium housing, pre-crimped motor and battery harness,
-            USB-C flashing cable, and a printed quick-start with pinout.
-          </Block>
-          <Block title="What you can tune">
-            Assist curves per level, torque ramp, field-weakening headroom, wheel size,
-            speed limit, and legal cut-off mode (EU / CH / US).
-          </Block>
-          <Block title="What ships with it">
-            Full schematics, KiCad sources, firmware repository, and the CAN protocol
-            reference. Released under CERN-OHL-S and GPL-3.0.
-          </Block>
+      {/* Price + CTA + Specs */}
+      <section className="container-x py-16 grid gap-14 md:grid-cols-12">
+        <aside className="md:col-span-4">
+          <div className="sticky top-24 rounded-lg border border-border bg-card p-6">
+            <div className="eyebrow">Price</div>
+            <div className="mt-2 font-display text-4xl">€ 320</div>
+            <div className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">
+              incl. workshop harness
+            </div>
+
+            <div className="mt-6 flex flex-col gap-3">
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center rounded-full bg-foreground px-6 py-3 text-sm font-medium text-primary-foreground hover:bg-foreground/90"
+              >
+                Order / fit at the workshop
+              </Link>
+              <a
+                href="mailto:workshop@resurrect.bike?subject=R-CTRL.02"
+                className="inline-flex items-center justify-center rounded-full border border-foreground/40 px-6 py-3 text-sm font-medium hover:border-foreground"
+              >
+                Ask a question
+              </a>
+            </div>
+
+            <ul className="mt-6 space-y-2 text-xs text-muted-foreground border-t border-border pt-4">
+              <li>· Fitted at the workshop in Gent</li>
+              <li>· Ships across the EU</li>
+              <li>· Two-year workshop warranty</li>
+            </ul>
+          </div>
+        </aside>
+
+        <div className="md:col-span-8">
+          <div className="eyebrow">Specifications</div>
+          <h2 className="mt-2 font-display text-3xl font-medium tracking-tight">
+            Documented, down to the pin.
+          </h2>
+
+          <dl className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5 text-sm">
+            <Spec k="MCU" v="STM32G4 · 170 MHz Cortex-M4F" />
+            <Spec k="Peak current" v="45 A phase · 30 A continuous" />
+            <Spec k="Voltage" v="36 – 48 V nominal · 54.6 V max" />
+            <Spec k="Control" v="Sensored FOC · 40 kHz loop" />
+            <Spec k="Protocol" v="Open CAN 2.0B · documented" />
+            <Spec k="Fits" v="Klever B / X / S45 mid-drive" />
+            <Spec k="Firmware" v="GPL-3.0 · OTA capable" />
+            <Spec k="Diagnostics" v="USB-C serial + CAN" />
+            <Spec k="Housing" v="Milled aluminium · IP66" />
+            <Spec k="Cooling" v="Conductive to frame mount" />
+            <Spec k="Dimensions" v="118 × 74 × 22 mm · 210 g" />
+            <Spec k="Warranty" v="2 years, workshop-serviced" />
+          </dl>
+
+          <div className="mt-14 grid gap-10 md:grid-cols-3 border-t border-border pt-10">
+            <Block title="What you can tune">
+              Assist curves per level, torque ramp, field-weakening headroom, wheel
+              size, speed limit, and legal cut-off mode (EU / CH / US).
+            </Block>
+            <Block title="What ships with it">
+              Full schematics, KiCad sources, firmware repository, and the CAN
+              protocol reference. Released under CERN-OHL-S and GPL-3.0.
+            </Block>
+            <Block title="Fit &amp; support">
+              Fitted and calibrated at the workshop in Gent. Remote flashing and
+              tuning available for shops that stock the harness.
+            </Block>
+          </div>
+
+          <div className="mt-14 border-t border-border pt-10">
+            <div className="eyebrow">In the box</div>
+            <ul className="mt-4 grid gap-2 sm:grid-cols-2 text-sm text-foreground/80">
+              <li>· R-CTRL.02 controller in aluminium housing</li>
+              <li>· Pre-crimped motor + battery harness</li>
+              <li>· USB-C flashing cable</li>
+              <li>· CAN diagnostic breakout</li>
+              <li>· Frame-mount bracket &amp; hardware</li>
+              <li>· Printed quick-start with pinout</li>
+            </ul>
+          </div>
         </div>
       </section>
     </Page>
