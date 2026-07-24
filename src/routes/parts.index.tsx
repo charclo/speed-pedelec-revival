@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Page } from "@/components/site-shell";
 
-export const Route = createFileRoute("/parts")({
+export const Route = createFileRoute("/parts/")({
   head: () => ({
     meta: [
       { title: "Parts — Resurrect" },

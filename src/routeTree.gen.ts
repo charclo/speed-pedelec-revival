@@ -10,21 +10,16 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as PartsRouteImport } from './routes/parts'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PartsIndexRouteImport } from './routes/parts.index'
 import { Route as PartsMotorControllerRouteImport } from './routes/parts.motor-controller'
 import { Route as PartsGpsLoggerRouteImport } from './routes/parts.gps-logger'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PartsRoute = PartsRouteImport.update({
-  id: '/parts',
-  path: '/parts',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -42,44 +37,49 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PartsIndexRoute = PartsIndexRouteImport.update({
+  id: '/parts/',
+  path: '/parts/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PartsMotorControllerRoute = PartsMotorControllerRouteImport.update({
-  id: '/motor-controller',
-  path: '/motor-controller',
-  getParentRoute: () => PartsRoute,
+  id: '/parts/motor-controller',
+  path: '/parts/motor-controller',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const PartsGpsLoggerRoute = PartsGpsLoggerRouteImport.update({
-  id: '/gps-logger',
-  path: '/gps-logger',
-  getParentRoute: () => PartsRoute,
+  id: '/parts/gps-logger',
+  path: '/parts/gps-logger',
+  getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/parts': typeof PartsRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/parts/gps-logger': typeof PartsGpsLoggerRoute
   '/parts/motor-controller': typeof PartsMotorControllerRoute
+  '/parts/': typeof PartsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/parts': typeof PartsRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/parts/gps-logger': typeof PartsGpsLoggerRoute
   '/parts/motor-controller': typeof PartsMotorControllerRoute
+  '/parts': typeof PartsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/parts': typeof PartsRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/parts/gps-logger': typeof PartsGpsLoggerRoute
   '/parts/motor-controller': typeof PartsMotorControllerRoute
+  '/parts/': typeof PartsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -87,36 +87,38 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
-    | '/parts'
     | '/sitemap.xml'
     | '/parts/gps-logger'
     | '/parts/motor-controller'
+    | '/parts/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/contact'
-    | '/parts'
     | '/sitemap.xml'
     | '/parts/gps-logger'
     | '/parts/motor-controller'
+    | '/parts'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/contact'
-    | '/parts'
     | '/sitemap.xml'
     | '/parts/gps-logger'
     | '/parts/motor-controller'
+    | '/parts/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
-  PartsRoute: typeof PartsRouteWithChildren
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  PartsGpsLoggerRoute: typeof PartsGpsLoggerRoute
+  PartsMotorControllerRoute: typeof PartsMotorControllerRoute
+  PartsIndexRoute: typeof PartsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -126,13 +128,6 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/parts': {
-      id: '/parts'
-      path: '/parts'
-      fullPath: '/parts'
-      preLoaderRoute: typeof PartsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -156,52 +151,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/parts/': {
+      id: '/parts/'
+      path: '/parts'
+      fullPath: '/parts/'
+      preLoaderRoute: typeof PartsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/parts/motor-controller': {
       id: '/parts/motor-controller'
-      path: '/motor-controller'
+      path: '/parts/motor-controller'
       fullPath: '/parts/motor-controller'
       preLoaderRoute: typeof PartsMotorControllerRouteImport
-      parentRoute: typeof PartsRoute
+      parentRoute: typeof rootRouteImport
     }
     '/parts/gps-logger': {
       id: '/parts/gps-logger'
-      path: '/gps-logger'
+      path: '/parts/gps-logger'
       fullPath: '/parts/gps-logger'
       preLoaderRoute: typeof PartsGpsLoggerRouteImport
-      parentRoute: typeof PartsRoute
+      parentRoute: typeof rootRouteImport
     }
   }
 }
-
-interface PartsRouteChildren {
-  PartsGpsLoggerRoute: typeof PartsGpsLoggerRoute
-  PartsMotorControllerRoute: typeof PartsMotorControllerRoute
-}
-
-const PartsRouteChildren: PartsRouteChildren = {
-  PartsGpsLoggerRoute: PartsGpsLoggerRoute,
-  PartsMotorControllerRoute: PartsMotorControllerRoute,
-}
-
-const PartsRouteWithChildren = PartsRoute._addFileChildren(PartsRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
-  PartsRoute: PartsRouteWithChildren,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  PartsGpsLoggerRoute: PartsGpsLoggerRoute,
+  PartsMotorControllerRoute: PartsMotorControllerRoute,
+  PartsIndexRoute: PartsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
