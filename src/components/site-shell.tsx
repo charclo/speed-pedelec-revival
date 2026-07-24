@@ -1,5 +1,14 @@
 import { Link } from "@tanstack/react-router";
+import { Menu } from "lucide-react";
 import type { ReactNode } from "react";
+
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 
 function Wordmark({ tone = "ink" }: { tone?: "ink" | "paper" }) {
