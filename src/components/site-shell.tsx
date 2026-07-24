@@ -1,5 +1,14 @@
 import { Link } from "@tanstack/react-router";
+import { Menu } from "lucide-react";
 import type { ReactNode } from "react";
+
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 
 function Wordmark({ tone = "ink" }: { tone?: "ink" | "paper" }) {
@@ -59,12 +68,52 @@ export function SiteHeader() {
             </Link>
           ))}
         </nav>
-        <Link
-          to="/contact"
-          className="hidden sm:inline-flex items-center rounded-full border border-foreground/80 px-4 py-1.5 text-xs font-medium tracking-wide uppercase hover:bg-foreground hover:text-primary-foreground transition-colors"
-        >
-          Request a part
-        </Link>
+        <div className="flex items-center gap-3">
+          <Link
+            to="/contact"
+            className="hidden sm:inline-flex items-center rounded-full border border-foreground/80 px-4 py-1.5 text-xs font-medium tracking-wide uppercase hover:bg-foreground hover:text-primary-foreground transition-colors"
+          >
+            Request a part
+          </Link>
+          <Sheet>
+            <SheetTrigger asChild>
+              <button
+                type="button"
+                className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-md border border-border/60 bg-background hover:bg-muted transition-colors"
+                aria-label="Open menu"
+              >
+                <Menu className="h-5 w-5" />
+              </button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[min(85vw,20rem)]">
+              <SheetHeader>
+                <SheetTitle className="sr-only">Navigation</SheetTitle>
+              </SheetHeader>
+              <nav className="mt-8 flex flex-col gap-2">
+                {nav.map((n) => (
+                  <SheetTrigger asChild key={n.to}>
+                    <Link
+                      to={n.to}
+                      className="flex items-center rounded-lg px-4 py-3 text-base font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+                      activeProps={{ className: "bg-muted text-foreground" }}
+                      activeOptions={{ exact: n.to === "/" }}
+                    >
+                      {n.label}
+                    </Link>
+                  </SheetTrigger>
+                ))}
+                <SheetTrigger asChild>
+                  <Link
+                    to="/contact"
+                    className="mt-4 inline-flex items-center justify-center rounded-full border border-foreground/80 px-4 py-2.5 text-sm font-medium tracking-wide uppercase hover:bg-foreground hover:text-primary-foreground transition-colors"
+                  >
+                    Request a part
+                  </Link>
+                </SheetTrigger>
+              </nav>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </header>
   );
